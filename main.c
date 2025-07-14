@@ -1,46 +1,30 @@
 #include<stdio.h>
-#include<stdlib>
-#include<stdbool.h>
-#include<ncurses.h>
-
-#define user "pmdev"
-#define DeviceName "pmdev"
-#define INPUT_BUFFER 1024
-#define ctrl(x) ((x) & 0x1f)
+#include"utils.h"
 
 
-int main(int argc,char **argv){
-    initscr();
-    raw();
-    noecho();
-    
-    bool QUIT = false;
-    int ch;
+void shell_loop(char **envp){
+	char *input = NULL;
+	size_t input_size = 0;
 
-    char command[INPUT_BUFFER] = {0};
-    size_t command_s = 0;
-    size_t line = 0;
-    
-    while(!QUIT){
-        mvprintw(line,0,"%s@%s$",DeviceName,user);
-        printw(command);
-        ch = getch();
-        switch(ch){
-            case ctrl(q):
-                QUIT = true;
-                break;
-            case 10:
-                line++;
-                memset(command,0,sizeof(char)*command_s);
-                command_s=0;
-                break;
-            default:
-                command[command_s++] = ch;
-                break;
-        }
-        erase();
-    }
-    refresh();
-    endwin();
-    return 0;
+	char **args;
+	
+	while(true){
+		printf("[bash]$ ");
+		if(getline(&input,&input_size,stdin) == -1){ // End of file (EOF), ctrl+D
+			perror("getline");
+			break;
+		}
+		args = parse(input);
+		
+		size_t status = exec(args);
+	}
+}
+
+int main(int argc,char **argv,char **envp){
+	(void)argc;
+	(void)argv;
+
+	shell_loop(envp);
+
+	return 0;
 }

@@ -1,0 +1,8 @@
+1. shell loop
+2. input parsing
+3. Command Execution
+4. Handle Built-in commands - cd,pwd,history,echo,env,which,exit,cat
+5. Execute external commands
+6. Manage environmental variables
+7. Manage Path
+8. Error Handling
