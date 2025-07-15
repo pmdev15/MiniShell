@@ -2,9 +2,7 @@
 
 void init(char **envp){
 	char *input = NULL;
-	size_t input_size = 0;
-
-	char **args;
+	char **args = NULL;
 	
 	while(true){
 		printf("[bash]$ ");
@@ -18,9 +16,6 @@ void init(char **envp){
 }
 
 int exec(char **args){
-    for (size_t i = 0;args[i]; i++){
-			printf("ARGS: %s\n",args[i]);
-		}
 	int status = builts(args);
 	return status;
 }

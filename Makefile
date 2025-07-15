@@ -1,6 +1,7 @@
 TARGET = shell
 OBJ = main.c parser.c utils.c builtins.c
 CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
 all:
 	$(CC) -o $(TARGET) $(OBJ)
