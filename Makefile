@@ -1,5 +1,5 @@
 TARGET = shell
-OBJ = main.c parser.c utils.c
+OBJ = main.c parser.c utils.c builtins.c
 CC = gcc
 
 all:
