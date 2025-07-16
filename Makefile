@@ -1,10 +1,10 @@
 TARGET = shell
 OBJ = main.c parser.c utils.c builtins.c
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra 
 
 all:
-	$(CC) -o $(TARGET) $(OBJ)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
 
 clean:
 	rm -f *-o

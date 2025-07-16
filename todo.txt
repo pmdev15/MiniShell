@@ -6,3 +6,14 @@
 6. Manage environmental variables
 7. Manage Path
 8. Error Handling
+
+Built-in
+cd
+pwdecho
+env
+which
+exit
+
+Binary
+ls
+cat

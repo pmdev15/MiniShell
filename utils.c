@@ -1,15 +1,17 @@
 #include"utils.h"
 
 void init(char **envp){
+	(void)envp;
 	char *input = NULL;
 	char **args = NULL;
 	
 	while(true){
 		printf("[bash]$ ");
-		input = read_line();
+		input = read_l();
 		args = parse(input);
 		
-		size_t status = exec(args);
+		//size_t status = exec(args);
+		exec(args);
 	}
 	free_buffer(input);
 	free_buffers(args);
@@ -49,8 +51,7 @@ char *read_l(void){
 // same as above but using builtin C func - getline
 char *read_line(void){
 	char *buffer = NULL;
-	ssize_t bufsize = 0; // ssize_t = signed size_t
-						 // cuz incase cannot allocate buffer
+	size_t bufsize = 0; 
 
 	if(getline(&buffer,&bufsize,stdin) == -1){
 		if(feof(stdin)){
