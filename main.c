@@ -4,11 +4,12 @@
 
 int main(int argc,char **argv,char **envp){
 
-	// these are void casted to tell the complier not to complain about unused variables
-	(void)argc;
-	(void)argv;
+	cmdin_t cmdin;
+	cmdin.argc = argc;
+	cmdin.argv = argv;
+	cmdin.envp = envp;
 
-	init(envp);
+	init(cmdin);
 
 	return 0;
 }

@@ -1,3 +1,8 @@
+Everything is a file
+
+shell in C
+GUI in C++
+
 1. shell loop
 2. input parsing
 3. Command Execution

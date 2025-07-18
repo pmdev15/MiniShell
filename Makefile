@@ -1,5 +1,5 @@
 TARGET = shell
-OBJ = main.c parser.c utils.c builtins.c
+OBJ = main.c parser.c utils.c builtins.c execute.c
 CC = gcc
 CFLAGS = -Wall -Wextra 
 

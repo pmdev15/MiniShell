@@ -1,6 +1,6 @@
 #include"builtins.h"
 
-int builts(char **args){
+int builts(char **args,char **envp){
     if(args==0 ||args[0]==0){
         return 0;
     }
@@ -19,9 +19,6 @@ int builts(char **args){
     else if(!strcmp(args[0],"mkdir")){
 
     }
-    else if(!strcmp(args[0],"cat")){
-
-    }
     else if(!strcmp(args[0],"ls")){
 
     }
@@ -38,7 +35,8 @@ int builts(char **args){
         return clear();
     }
     else{   // Not a builtin command
-        printf("%s :command not found\n",args[0]);
+        //printf("%s :command not found\n",args[0]);
+        execute(args,envp);
     }
     return 0;
 }
@@ -119,7 +117,17 @@ int which(char **args){
         printf("which: expected arguments\n");
         return 1;
     }
-    
+
+    //List built in commands
+    //for(size_t i=0;build[i];i++){
+    //    if(!strcmp(args[i],build[i])){
+    //        printf("%s: shell builtin commands\n",args[i]);
+    //    }
+    //}
+
+    // Check external path
+    //char *full_path;
+    return 0;
 }
 
 void quit(void){

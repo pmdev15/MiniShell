@@ -1,24 +1,23 @@
 #include"utils.h"
 
-void init(char **envp){
-	(void)envp;
+void init(cmdin_t cmdin){
 	char *input = NULL;
 	char **args = NULL;
 	
 	while(true){
 		printf("[bash]$ ");
-		input = read_l();
+		input = read_line();
 		args = parse(input);
 		
 		//size_t status = exec(args);
-		exec(args);
+		exec(args,cmdin.envp);
 	}
 	free_buffer(input);
 	free_buffers(args);
 }
 
-int exec(char **args){
-	int status = builts(args);
+int exec(char **args,char **envp){
+	int status = builts(args,envp);
 	return status;
 }
 // NOTE :- donot use ctrl + d with read (only with readline cuz getline)

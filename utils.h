@@ -9,9 +9,15 @@
 #include"parser.h"
 #include"builtins.h"
 
-void init(char **envp);
+typedef struct CMD{
+    int argc;
+    char **argv;
+    char **envp;
+}cmdin_t;
 
-int exec(char **args);
+void init(cmdin_t cmdsin);
+
+int exec(char **args,char **envp);
 
 char *read_l(void);
 char *read_line(void);
