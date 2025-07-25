@@ -1,6 +1,7 @@
 #include"builtins.h"
 
 int builts(char **args,char **envp){
+    (void)envp;
     if(args==0 ||args[0]==0){
         return 0;
     }
@@ -17,7 +18,7 @@ int builts(char **args,char **envp){
         return change_dir(args);
     }
     else if(!strcmp(args[0],"mkdir")){
-
+        return makedir(args);
     }
     else if(!strcmp(args[0],"ls")){
 
@@ -35,8 +36,8 @@ int builts(char **args,char **envp){
         return clear();
     }
     else{   // Not a builtin command
-        //printf("%s :command not found\n",args[0]);
-        execute(args,envp);
+        printf("%s :command not found\n",args[0]);
+        //execute(args,envp);
     }
     return 0;
 }
@@ -129,6 +130,8 @@ int which(char **args){
     //char *full_path;
     return 0;
 }
+
+
 
 void quit(void){
     exit(EXIT_SUCCESS);

@@ -6,7 +6,9 @@
 #include<stdbool.h>
 #include<unistd.h>
 #include<string.h>
+
 #include"execute.h"
+#include"makedir.h"
 
 //char *build[] = {"cd","exit","pwd","which","echo","mkdir","ls","help","history","clear"};
 
@@ -18,6 +20,5 @@ int echo(char **args);
 void quit(void);
 int clear(void);
 int which(char **args);
-
 
 #endif
