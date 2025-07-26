@@ -1,5 +1,5 @@
 TARGET = shell.out
-OBJ = main.c parser.c utils.c builtins.c execute.c makedir.c
+OBJ = main.c parser.c utils.c builtins.c execute.c makedir.c cat.c
 CC = gcc
 CFLAGS = -Wall -Wextra 
 

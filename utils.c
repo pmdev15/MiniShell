@@ -9,8 +9,9 @@ void init(cmdin_t cmdin){
 		input = read_line();
 		args = parse(input);
 		
-		//size_t status = exec(args);
+		//size_t status = exec(args,cmdin.envp);
 		exec(args,cmdin.envp);
+
 	}
 	free_buffer(input);
 	free_buffers(args);

@@ -35,6 +35,9 @@ int builts(char **args,char **envp){
     else if(!strcmp(args[0],"clear")){
         return clear();
     }
+    else if(!strcmp(args[0],"cat")){
+        return cat(args);
+    }
     else{   // Not a builtin command
         printf("%s :command not found\n",args[0]);
         //execute(args,envp);

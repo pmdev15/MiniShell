@@ -9,6 +9,7 @@
 
 #include"execute.h"
 #include"makedir.h"
+#include"cat.h"
 
 //char *build[] = {"cd","exit","pwd","which","echo","mkdir","ls","help","history","clear"};
 
