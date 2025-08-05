@@ -1,14 +1,14 @@
 #ifndef CAT_H
 #define CAT_H
 
-#include<stdio.h>
-#include<stdlib.h>
 #include<fcntl.h> // header file for ORDONLY and others
 
 #include"utils.h"
 
 #define MAX_INPUT 1024
-#define READ O_RDONLY
+#define READ "r+"
+#define WRITE "w+"
+#define APPEND "a+"
 
 int cat(char **args);
 char *reads();
