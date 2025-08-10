@@ -3,4 +3,7 @@
 
 #include"utils.h"
 
+void addHistory(char *line);
+int displayHistory();
+
 #endif

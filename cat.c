@@ -1,10 +1,11 @@
 #include"cat.h"
 
-FILE *fd;
 
 int cat(char **args){
+    FILE *fd;
+
     if(!args[1]){   // todo - handle ctrl+d
-        char *line = reads();fscanf(fd,"%s",line);
+        char *line = reads();
         while(line!=NULL){
             fprintf(stdout,"%s",line);
             line = reads();
@@ -18,16 +19,31 @@ int cat(char **args){
         fd = fopen(file_name,"r");
         if(!fd){
         fprintf(stderr,"%s No such file or directory!\n",file_name);
-        return EXIT_FAILURE;
+        return 1;
         }
-        char c;
-        while((c = getc(fd)) != EOF){
-            fprintf(stdout,"%c",c);   
+        char *data = NULL;
+        size_t size = fileSize(fd);
+        data = (char *)malloc(size * sizeof(char));
+        while(fgets(data,MAX_INPUT,fd)){
+            fprintf(stdout,"%s",data);   
         }
+        fflush(fd);
         fclose(fd);
     }   
     return 0;
 }
+
+//For already opened file
+size_t fileSize(FILE *fd){
+    struct stat st;
+    if (fstat(fileno(fd), &st) == 0) { // Get status from file descriptor
+        return st.st_size;
+    } else {
+        perror("Error getting file status from file pointer");
+        return -1;
+    }
+}
+
 // todo - Handle ctrl+d
 char *reads(void){
 	char *buffer = NULL;

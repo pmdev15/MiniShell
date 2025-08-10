@@ -27,7 +27,7 @@ int builts(char **args,char **envp){
 
     }
     else if(!strcmp(args[0],"history")){
-        
+        return displayHistory();
     }
     else if(!strcmp(args[0],"which")){
         return which(args);

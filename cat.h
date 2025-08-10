@@ -11,6 +11,7 @@
 #define APPEND "a+"
 
 int cat(char **args);
+size_t fileSize(FILE *fd);
 char *reads();
 
 #endif

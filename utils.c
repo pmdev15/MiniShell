@@ -4,17 +4,37 @@ void init(cmdin_t cmdin){
 	char *input = NULL;
 	char **args = NULL;
 	
+	char host[MAX_INPUT] = "";
+	char *logname = getenv("LOGNAME");
+	gethostname(host,sizeof(host));
+
 	while(true){
-		printf("[bash]$ ");
+		shell_prompt(host,logname);
 		input = read_line();
 		args = parse(input);
 		
+		/* Add command to history */
+		addHistory(input);
 		//size_t status = exec(args,cmdin.envp);
 		exec(args,cmdin.envp);
 
 	}
 	free_buffer(input);
 	free_buffers(args);
+}
+
+void shell_prompt(char *host,char *logname){
+	char *pwd = getcwd(NULL,0);
+	char *home = "/home/user";
+	char dir[1024];
+	if(!strncmp(pwd,home,10)){
+		strcpy(dir,"~");
+		strcat(dir,pwd+10);
+	}
+	else{
+		strcpy(dir,pwd);
+	}
+	printf("%s@%s:%s$ ",logname,host,dir);
 }
 
 int exec(char **args,char **envp){

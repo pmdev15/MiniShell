@@ -16,6 +16,7 @@ typedef struct CMD{
 }cmdin_t;
 
 void init(cmdin_t cmdsin);
+void shell_prompt(char *host,char *logname);
 
 int exec(char **args,char **envp);
 
