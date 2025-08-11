@@ -39,8 +39,8 @@ int builts(char **args,char **envp){
         return cat(args);
     }
     else{   // Not a builtin command
-        printf("%s :command not found\n",args[0]);
-        //execute(args,envp);
+        //printf("%s :command not found\n",args[0]);
+        return execute(args,envp);
     }
     return 0;
 }

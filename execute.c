@@ -12,11 +12,10 @@ int execute(char **args,char **envp){
         return 1;
     }
     if(pid == 0){ //Child Process
-        if(child_process(args,envp)){
-        //if(execvp(args[0],args)){ 
-            //perror("execve");
+        //if(child_process(args,envp)){
+        if(execvp(args[0],args)){
             printf("%s: command not found\n",args[0]);
-            return 1;
+            exit(EXIT_FAILURE);
         }
     }
     else{ //Parent Process
@@ -27,9 +26,14 @@ int execute(char **args,char **envp){
         if (WIFSIGNALED(status)) {
             printf("Process terminated by signal: %d\n", WTERMSIG(status));
         }
+    //  do {
+    //        waitpid(pid, &status, WUNTRACED);
+    // } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+
+        return 1;
     }
 
-    return 1;
+    return 0;
 }
 
 //Attempt tp execute command by searching paths and the pwd

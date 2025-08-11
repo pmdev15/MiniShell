@@ -17,11 +17,12 @@ cd          DONE
 pwd         DONE
 echo        DONE
 mkdir       DONE
-history
+history     DONE
 env
 which
 exit        DONE
+help
 
 Binary
-ls
-cat
+ls          
+cat         DONE
